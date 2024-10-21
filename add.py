@@ -58,9 +58,10 @@ bpy.context.object.data.energy = 2
 
 # レンダリング
 bpy.context.scene.render.image_settings.file_format = "PNG"
-bpy.context.scene.render.filepath = "./render.png"
+bpy.context.scene.render.filepath = "./output.png"
 bpy.context.scene.render.resolution_x = 256 * 4
 bpy.context.scene.render.resolution_y = 128 * 4
+bpy.context.scene.cycles.samples = 1024
 bpy.context.scene.render.engine = "CYCLES"
 bpy.context.scene.cycles.device = "CPU"
 bpy.ops.render.render(write_still=True)
