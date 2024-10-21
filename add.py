@@ -48,7 +48,7 @@ for i in range(7):
         bpy.context.collection.objects.link(obj)
 
 # カメラ
-bpy.ops.object.camera_add(location=(10, -20, 30), rotation=(math.pi / 4, 0, 0))
+bpy.ops.object.camera_add(location=(10, -25, 30), rotation=(math.pi / 4, 0, 0))
 bpy.context.object.data.ortho_scale = 20
 bpy.context.scene.camera = bpy.context.object
 

@@ -26,7 +26,7 @@ jobs:
                 git config --global user.email "actions@github.com"
                 git config --global user.name "GitHub Actions"
                 git checkout -b output
-                git add output.png
+                git add -f output.png
                 git commit -m "Add output.png"
                 git push origin output
 
