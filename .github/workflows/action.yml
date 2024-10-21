@@ -3,8 +3,7 @@ name: Generate Picture and Push to output branch
 on:
     push:
         branches:
-            - master
-            - actions
+            - main
 
 jobs:
     generate:
@@ -29,7 +28,7 @@ jobs:
                 git commit -m "Add output.png"
                 git push origin output
 
-                
+
 
                 
                 
