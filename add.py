@@ -128,7 +128,7 @@ bpy.context.object.data.energy = 2
 
 # レンダリング
 bpy.context.scene.render.image_settings.file_format = "PNG"
-bpy.context.scene.render.filepath = "./output.png"
+bpy.context.scene.render.filepath = "./dist/output.png"
 # 背景を透過
 bpy.context.scene.render.film_transparent = True
 bpy.context.scene.render.resolution_x = int(1280 * 2)
