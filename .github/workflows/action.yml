@@ -22,7 +22,7 @@ jobs:
           #   run: ./blender-4.2.3-linux-x64/blender --background --threads 0 -noaudio --python add.py
 
           - name: Generate Picture
-            uses: ry05k2ulv/grassland
+            uses: ry05k2ulv/grassland@main
             env:
                 GITHUB_USERNAME: ${{ github.repository_owner }}
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
