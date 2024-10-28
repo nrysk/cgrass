@@ -4,10 +4,8 @@ import os
 import random
 import sys
 
-import bmesh
 import bpy
 import mathutils
-from bpy.types import GeometryNode
 
 sys.path.append(os.path.dirname(__file__))
 from fetch import fetch_github_contributions
@@ -25,7 +23,7 @@ bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete()
 
 # grass object の読み込み
-object_filenames = ["Grass", "Dirt"]
+object_filenames = ["Grass", "DirtBlock", "GrassBlock"]
 for f in object_filenames:
     bpy.ops.wm.append(
         filename=f,
@@ -42,7 +40,10 @@ for i, week in enumerate(calender.get("weeks")):
         level = day.get("contributionLevel")
 
         # Dirt の生成
-        obj = bpy.data.objects["Dirt"]
+        if level == "NONE":
+            obj = bpy.data.objects["DirtBlock"]
+        else:
+            obj = bpy.data.objects["GrassBlock"]
         obj = obj.copy()
         obj.data = obj.data.copy()
         obj.dimensions = (

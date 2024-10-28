@@ -1,0 +1,16 @@
+name: grassland
+description: Generate 3d grass image from github contributions grid
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install dependencies
+      run: |
+          wget https://download.blender.org/release/Blender4.2/blender-4.2.3-linux-x64.tar.xz
+          tar -xvf blender-4.2.3-linux-x64.tar.xz
+      shell: bash
+
+    - name: Generate Picture
+      run: ./blender-4.2.3-linux-x64/blender --background --threads 0 -noaudio --python $GITHUB_ACTION_PATH/add.py
+      shell: bash
+
