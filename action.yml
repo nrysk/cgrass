@@ -1,16 +1,34 @@
 name: grassland
 description: Generate 3d grass image from github contributions grid
 
+inputs:
+  github_username:
+    description: "GitHub username which contributions grid to use for generating image"
+    required: true
+  
+  github_token:
+    description: "GitHub token for fetching contributions grid"
+    required: true
+
 runs:
   using: "composite"
   steps:
     - name: Install dependencies
-      run: |
-          wget https://download.blender.org/release/Blender4.2/blender-4.2.3-linux-x64.tar.xz
-          tar -xvf blender-4.2.3-linux-x64.tar.xz
+      run: |   
+          wget https://download.blender.org/release/Blender4.2/blender-4.2.3-linux-x64.tar.xz -q
+          tar -xf blender-4.2.3-linux-x64.tar.xz
       shell: bash
-
+          
     - name: Generate Picture
-      run: ./blender-4.2.3-linux-x64/blender --background --threads 0 -noaudio --python $GITHUB_ACTION_PATH/add.py
+      run: >
+          ./blender-4.2.3-linux-x64/blender
+          --background
+          --threads 0
+          -noaudio
+          --python $GITHUB_ACTION_PATH/src/main.py
+          -- -b $GITHUB_ACTION_PATH/assets/objects.blend
       shell: bash
-
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+        GITHUB_USERNAME: ${{ inputs.github_username }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}

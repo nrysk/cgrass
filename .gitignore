@@ -1,3 +1,4 @@
 *.png
 .env
 __pycache__
+*.blend1
