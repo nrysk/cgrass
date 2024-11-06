@@ -9,6 +9,10 @@ inputs:
   github_token:
     description: "GitHub token for fetching contributions grid"
     required: true
+  
+  config_file:
+    description: "Path to config file"
+    required: true
 
 runs:
   using: "composite"
@@ -26,9 +30,12 @@ runs:
           --threads 0
           -noaudio
           --python $GITHUB_ACTION_PATH/src/main.py
-          -- -b $GITHUB_ACTION_PATH/assets/objects.blend
+          -- 
+          -b $GITHUB_ACTION_PATH/assets/objects.blend
+          -c $CONFIG_FILE
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
         GITHUB_USERNAME: ${{ inputs.github_username }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
+        CONFIG_FILE: ${{ inputs.config_file }}

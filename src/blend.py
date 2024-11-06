@@ -58,7 +58,10 @@ def place_fog(
     pass
 
 
-def place_ground(level_matrix: list[list[ContributionLevel]]):
+def place_ground(
+    level_matrix: list[list[ContributionLevel]],
+    ground_config: dict[str, dict[str, any]],
+):
     ground_objects = [
         bpy.data.objects[ObjectName.GROUND1],
         bpy.data.objects[ObjectName.GROUND2],
@@ -72,6 +75,18 @@ def place_ground(level_matrix: list[list[ContributionLevel]]):
         ContributionLevel.THIRD_QUARTILE: MaterialName.GROUND_THIRD_QUARTILE,
         ContributionLevel.FOURTH_QUARTILE: MaterialName.GROUND_FOURTH_QUARTILE,
     }
+
+    # Material の設定
+    for mat_name in [
+        MaterialName.GROUND_NONE,
+        MaterialName.GROUND_FIRST_QUARTILE,
+        MaterialName.GROUND_SECOND_QUARTILE,
+        MaterialName.GROUND_THIRD_QUARTILE,
+        MaterialName.GROUND_FOURTH_QUARTILE,
+    ]:
+        color_ramp_node = bpy.data.materials[mat_name].node_tree.nodes["Color Ramp"]
+        color_ramp_node.color_ramp.elements[0].color = ground_config[mat_name]["color0"]
+        color_ramp_node.color_ramp.elements[1].color = ground_config[mat_name]["color1"]
 
     for i_col, week in enumerate(level_matrix):
         for i_row, level in enumerate(week):
@@ -162,10 +177,14 @@ def render_image(
 def generate(
     blend_file: str,
     data: ContributionData,
+    config: dict[str, any],
 ):
     delete_all()
     load_objects(blend_file, [o.value for o in ObjectName])
-    place_ground(data.level_matrix)
+    place_ground(
+        data.level_matrix,
+        config["ground"],
+    )
     # place_grass(data)
 
     delete_objects([o.value for o in ObjectName])
