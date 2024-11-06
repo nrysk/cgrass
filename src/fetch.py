@@ -1,7 +1,26 @@
 import json
 from dataclasses import dataclass
+from enum import IntEnum
 
 import requests
+
+
+class ContributionLevel(IntEnum):
+    NONE = 0
+    FIRST_QUARTILE = 1
+    SECOND_QUARTILE = 2
+    THIRD_QUARTILE = 3
+    FOURTH_QUARTILE = 4
+
+    @classmethod
+    def from_str(cls, level: str) -> "ContributionLevel":
+        return {
+            "NONE": cls.NONE,
+            "FIRST_QUARTILE": cls.FIRST_QUARTILE,
+            "SECOND_QUARTILE": cls.SECOND_QUARTILE,
+            "THIRD_QUARTILE": cls.THIRD_QUARTILE,
+            "FOURTH_QUARTILE": cls.FOURTH_QUARTILE,
+        }[level]
 
 
 @dataclass
@@ -9,7 +28,7 @@ class ContributionData:
     total_contributions: int
     total_weeks: int
     count_matrix: list[list[int]]
-    level_matrix: list[list[str]]
+    level_matrix: list[list[ContributionLevel]]
 
 
 def fetch_github_contributions(username: str, token: str) -> ContributionData:
@@ -56,7 +75,10 @@ def fetch_github_contributions(username: str, token: str) -> ContributionData:
         for week in calender.get("weeks")
     ]
     level_matrix = [
-        [day.get("contributionLevel") for day in week.get("contributionDays")]
+        [
+            ContributionLevel.from_str(day.get("contributionLevel"))
+            for day in week.get("contributionDays")
+        ]
         for week in calender.get("weeks")
     ]
 
