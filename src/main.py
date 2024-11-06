@@ -18,6 +18,7 @@ def parse_args():
     parser.add_argument(
         "-b", "--blend-file", type=str, default="./assets/objects.blend"
     )
+
     return parser.parse_args(sys.argv[sys.argv.index("--") + 1 :])
 
 
@@ -35,7 +36,7 @@ if __name__ == "__main__":
     bpy.ops.object.delete()
 
     # grass object の読み込み
-    object_filenames = ["Grass", "DirtBlock", "GrassBlock"]
+    object_filenames = ["Grass", "DirtBlock", "GrassBlock", "GrassFloor", "Fog"]
     for f in object_filenames:
         bpy.ops.wm.append(
             filename=f,
@@ -44,21 +45,30 @@ if __name__ == "__main__":
         )
 
     # GitHub contributions を取得
-    data = fetch_github_contributions(github_username, github_token).get("data")
-    calender = (
-        data.get("user").get("contributionsCollection").get("contributionCalendar")
+    data = fetch_github_contributions(github_username, github_token)
+
+    # Fog の生成
+    obj = bpy.data.objects["Fog"]
+    obj = obj.copy()
+    obj.data = obj.data.copy()
+    obj.dimensions = (
+        GRID_SIZE * data.total_weeks * 4,
+        GRID_SIZE * 7 * 4,
+        40 * 2,
     )
+    obj.location = (
+        (data.total_weeks) * GRID_SIZE,
+        -14 * GRID_SIZE,
+        0,
+    )
+    bpy.context.collection.objects.link(obj)
 
     # 位置
-    for i, week in enumerate(calender.get("weeks")):
-        for j, day in enumerate(week.get("contributionDays")):
-            level = day.get("contributionLevel")
+    for i, week in enumerate(data.level_matrix):
+        for j, level in enumerate(week):
 
             # Dirt の生成
-            if level == "NONE":
-                obj = bpy.data.objects["DirtBlock"]
-            else:
-                obj = bpy.data.objects["GrassBlock"]
+            obj = bpy.data.objects["DirtBlock"]
             obj = obj.copy()
             obj.data = obj.data.copy()
             obj.dimensions = (
@@ -72,12 +82,6 @@ if __name__ == "__main__":
                 -(j + 1 / 2) * GRID_SIZE,
                 0,
             )
-
-            obj.modifiers["GeometryNodes"]["Socket_2"] = random.randint(0, 8)
-            obj.modifiers["GeometryNodes"]["Socket_3"] = (
-                0 if random.random() > 0.05 else random.random() * 0.5 + 0.1
-            )
-            obj.modifiers["GeometryNodes"]["Socket_4"] = random.random() > 0.5
             bpy.context.collection.objects.link(obj)
 
             # Grass の生成
