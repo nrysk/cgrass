@@ -61,6 +61,11 @@ def fetch_github_contributions(username: str, token: str) -> ContributionData:
     if response.status_code != 200:
         raise Exception(f"Failed to fetch data from GitHub: {response.text}")
 
+    if response.json().get("errors"):
+        raise Exception(
+            f"Failed to fetch data from GitHub: {response.json().get('errors')}"
+        )
+
     calender = (
         response.json()
         .get("data")

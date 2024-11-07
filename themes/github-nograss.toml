@@ -1,0 +1,55 @@
+[ground.none]
+color0 = [0.2, 0.2, 0.2, 1.0]
+color1 = [0.3, 0.3, 0.3, 1.0]
+
+[ground.first_quartile]
+color0 = [0.1, 0.2, 0.1, 1.0]
+color1 = [0.1, 0.3, 0.1, 1.0]
+
+[ground.second_quartile]
+color0 = [0.1, 0.6, 0.1, 1.0]
+color1 = [0.2, 0.7, 0.2, 1.0]
+
+[ground.third_quartile]
+color0 = [0.1, 0.8, 0.1, 1.0]
+color1 = [0.2, 0.9, 0.2, 1.0]
+
+[ground.fourth_quartile]
+color0 = [0.2, 1.1, 0.2, 1.0]
+color1 = [0.3, 1.3, 0.3, 1.0]
+
+
+[grass.none]
+color0 = [0.4, 0.9, 0.8, 1.0]
+color1 = [0.3, 1.0, 0.7, 1.0]
+z_scale = 0.0
+density = 0.0
+
+[grass.first_quartile]
+color0 = [0.1, 0.3, 0.1, 1.0]
+color1 = [0.1, 0.4, 0.1, 1.0]
+z_scale = 0.0
+density = 0.0
+
+[grass.second_quartile]
+color0 = [0.1, 0.5, 0.1, 1.0]
+color1 = [0.2, 0.6, 0.2, 1.0]
+z_scale = 0.0
+density = 0.0
+
+[grass.third_quartile]
+color0 = [0.1, 0.8, 0.1, 1.0]
+color1 = [0.2, 0.9, 0.2, 1.0]
+z_scale = 0.0
+density = 0.0
+
+[grass.fourth_quartile]
+color0 = [0.2, 1.1, 0.2, 1.0]
+color1 = [0.3, 1.3, 0.3, 1.0]
+z_scale = 0.0
+density = 0.0
+
+[sun]
+color = [1.0, 1.0, 1.0]
+energy = 3.0
+rotation = [45, 0, -45]

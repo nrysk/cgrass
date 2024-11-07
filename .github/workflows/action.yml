@@ -21,7 +21,7 @@ jobs:
             with:
                 github_username: ${{ github.repository_owner }}
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                config_file: ${{ github.workspace }}/config.toml
+                config_file: ${{ github.workspace }}/themes/c-planet.toml
 
           - name: Push output image to output branch
             uses: crazy-max/ghaction-github-pages@v4
