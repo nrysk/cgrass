@@ -1,11 +1,10 @@
-
 [ground.none]
 color0 = [0.9, 0.5, 0.7, 1.0]
 color1 = [0.8, 0.3, 0.6, 1.0]
 
 [ground.first_quartile]
-color0 = [0.7, 0.4, 0.6, 1.0]
-color1 = [0.6, 0.2, 0.5, 1.0]
+color0 = [0.55, 0.35, 0.4, 1.0]
+color1 = [0.45, 0.2, 0.3, 1.0]
 
 [ground.second_quartile]
 color0 = [0.5, 0.3, 0.4, 1.0]
@@ -16,40 +15,41 @@ color0 = [0.3, 0.2, 0.3, 1.0]
 color1 = [0.2, 0.0, 0.2, 1.0]
 
 [ground.fourth_quartile]
-color0 = [0.3, 0.1, 0.1, 1.0]
-color1 = [0.0, 0.0, 0.0, 1.0]
+color0 = [0.3, 0.1, 0.2, 1.0]
+color1 = [0.2, 0.0, 0.1, 1.0]
+
 
 [grass.none]
-color0 = [0.1, 0.9, 0.6, 1.0]
-color1 = [0.1, 0.9, 0.6, 1.0]
+color0 = [0.4, 0.9, 0.8, 1.0]
+color1 = [0.3, 1.0, 0.7, 1.0]
 z_scale = 0.0
 density = 0.0
 
 [grass.first_quartile]
-color0 = [0.1, 0.8, 0.5, 1.0]
-color1 = [0.1, 0.8, 0.5, 1.0]
+color0 = [0.3, 0.8, 0.6, 1.0]
+color1 = [0.2, 0.7, 0.5, 1.0]
 z_scale = 0.2
-density = 0.8
-
-[grass.second_quartile]
-color0 = [0.1, 0.7, 0.4, 1.0]
-color1 = [0.1, 0.7, 0.4, 1.0]
-z_scale = 0.5
 density = 2
 
+[grass.second_quartile]
+color0 = [0.1, 0.4, 0.4, 1.0]
+color1 = [0.05, 0.3, 0.1, 1.0]
+z_scale = 0.5
+density = 2.5
+
 [grass.third_quartile]
-color0 = [0.1, 0.6, 0.3, 1.0]
-color1 = [0.1, 0.6, 0.3, 1.0]
+color0 = [0.1, 0.3, 0.2, 1.0]
+color1 = [0.0, 0.2, 0.1, 1.0]
 z_scale = 0.7
-density = 3
+density = 3.5
 
 [grass.fourth_quartile]
-color0 = [0.1, 0.1, 0.1, 1.0]
-color1 = [0.0, 0.0, 0.0, 1.0]
+color0 = [0.01, 0.1, 0.1, 1.0]
+color1 = [0.0, 0.05, 0.05, 1.0]
 z_scale = 1.2
 density = 4
 
 [sun]
 color = [1.0, 1.0, 1.0]
-energy = 8.0
+energy = 5.0
 rotation = [45, 0, -45]

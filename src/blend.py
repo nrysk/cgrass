@@ -38,6 +38,7 @@ class MaterialName(StrEnum):
     GRASS_SECOND = "GrassSecond"
     GRASS_THIRD = "GrassThird"
     GRASS_FOURTH = "GrassFourth"
+    FOG = "Fog"
 
 
 def delete_all():
@@ -67,12 +68,6 @@ def delete_objects(object_names: list[str]):
     for obj in bpy.data.objects:
         if obj.name in object_names:
             bpy.data.objects.remove(obj)
-
-
-def place_fog(
-    object_name: str,
-):
-    pass
 
 
 def place_ground(
@@ -131,6 +126,11 @@ def place_grass(
     level_matrix: list[list[ContributionLevel]],
     grass_config: dict[str, dict[str, any]],
 ):
+    leaf_objects = [
+        bpy.data.objects[ObjectName.LEAF0],
+        bpy.data.objects[ObjectName.LEAF1],
+    ]
+
     level_to_material = {
         ContributionLevel.NONE: MaterialName.GRASS_NONE,
         ContributionLevel.FIRST_QUARTILE: MaterialName.GRASS_FIRST,
