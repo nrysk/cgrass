@@ -95,18 +95,13 @@ def place_ground(
     }
 
     # Material の設定
-    for mat_name in [
-        MaterialName.GROUND_NONE,
-        MaterialName.GROUND_FIRST,
-        MaterialName.GROUND_SECOND,
-        MaterialName.GROUND_THIRD,
-        MaterialName.GROUND_FOURTH,
-    ]:
+    for level in ContributionLevel:
+        mat_name = level_to_material[level]
         color_ramp = (
             bpy.data.materials[mat_name].node_tree.nodes["Color Ramp"].color_ramp
         )
-        color_ramp.elements[0].color = ground_config["material"][mat_name]["color0"]
-        color_ramp.elements[1].color = ground_config["material"][mat_name]["color1"]
+        color_ramp.elements[0].color = ground_config[level]["color0"]
+        color_ramp.elements[1].color = ground_config[level]["color1"]
 
     for i_col, week in enumerate(level_matrix):
         for i_row, level in enumerate(week):
@@ -144,18 +139,13 @@ def place_grass(
         ContributionLevel.FOURTH_QUARTILE: MaterialName.GRASS_FOURTH,
     }
     # Material の設定
-    for mat_name in [
-        MaterialName.GRASS_NONE,
-        MaterialName.GRASS_FIRST,
-        MaterialName.GRASS_SECOND,
-        MaterialName.GRASS_THIRD,
-        MaterialName.GRASS_FOURTH,
-    ]:
+    for level in ContributionLevel:
+        mat_name = level_to_material[level]
         color_ramp = (
             bpy.data.materials[mat_name].node_tree.nodes["Color Ramp"].color_ramp
         )
-        color_ramp.elements[0].color = grass_config["material"][mat_name]["color0"]
-        color_ramp.elements[1].color = grass_config["material"][mat_name]["color1"]
+        color_ramp.elements[0].color = grass_config[level]["color0"]
+        color_ramp.elements[1].color = grass_config[level]["color1"]
 
     for i, week in enumerate(level_matrix):
         for j, level in enumerate(week):
@@ -169,10 +159,8 @@ def place_grass(
                 -(j + 0.5) * GRID_SIZE,
                 0,
             )
-            obj.scale.z = grass_config["object"][level]["z_scale"]
-            obj.modifiers["GeometryNodes"]["Socket_4"] = grass_config["object"][level][
-                "density"
-            ]
+            obj.scale.z = grass_config[level]["z_scale"]
+            obj.modifiers["GeometryNodes"]["Socket_4"] = grass_config[level]["density"]
             obj.modifiers["GeometryNodes"]["Socket_2"] = random.randint(0, 256)
             obj.modifiers["GeometryNodes"]["Socket_6"] = bpy.data.materials[
                 level_to_material[level]

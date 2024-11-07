@@ -1,55 +1,50 @@
 
-[ground.material.GroundNone]
+[ground.none]
 color0 = [0.9, 0.5, 0.7, 1.0]
 color1 = [0.8, 0.3, 0.6, 1.0]
 
-[ground.material.GroundFirst]
+[ground.first_quartile]
 color0 = [0.7, 0.4, 0.6, 1.0]
 color1 = [0.6, 0.2, 0.5, 1.0]
 
-[ground.material.GroundSecond]
+[ground.second_quartile]
 color0 = [0.5, 0.3, 0.4, 1.0]
 color1 = [0.4, 0.1, 0.3, 1.0]
 
-[ground.material.GroundThird]
+[ground.third_quartile]
 color0 = [0.3, 0.2, 0.3, 1.0]
 color1 = [0.2, 0.0, 0.2, 1.0]
 
-[ground.material.GroundFourth]
+[ground.fourth_quartile]
 color0 = [0.3, 0.1, 0.1, 1.0]
 color1 = [0.0, 0.0, 0.0, 1.0]
 
-[grass.material.GrassNone]
+[grass.none]
 color0 = [0.1, 0.9, 0.6, 1.0]
 color1 = [0.1, 0.9, 0.6, 1.0]
-[grass.object.none]
 z_scale = 0.0
 density = 0.0
 
-[grass.material.GrassFirst]
+[grass.first_quartile]
 color0 = [0.1, 0.8, 0.5, 1.0]
 color1 = [0.1, 0.8, 0.5, 1.0]
-[grass.object.first_quartile]
 z_scale = 0.2
 density = 0.8
 
-[grass.material.GrassSecond]
+[grass.second_quartile]
 color0 = [0.1, 0.7, 0.4, 1.0]
 color1 = [0.1, 0.7, 0.4, 1.0]
-[grass.object.second_quartile]
 z_scale = 0.5
 density = 2
 
-[grass.material.GrassThird]
+[grass.third_quartile]
 color0 = [0.1, 0.6, 0.3, 1.0]
 color1 = [0.1, 0.6, 0.3, 1.0]
-[grass.object.third_quartile]
 z_scale = 0.7
 density = 3
 
-[grass.material.GrassFourth]
+[grass.fourth_quartile]
 color0 = [0.1, 0.1, 0.1, 1.0]
 color1 = [0.0, 0.0, 0.0, 1.0]
-[grass.object.fourth_quartile]
 z_scale = 1.2
 density = 4
