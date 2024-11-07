@@ -182,9 +182,12 @@ def place_camera(
     bpy.context.scene.camera = bpy.context.object
 
 
-def place_sun(rotation: tuple[float, float, float]):
-    bpy.ops.object.light_add(type="SUN", rotation=rotation)
-    bpy.context.object.data.energy = 6
+def place_sun(sun_config: dict[str, any]):
+    bpy.ops.object.light_add(
+        type="SUN", rotation=mathutils.Euler(sun_config["rotation"])
+    )
+    bpy.context.object.data.color = sun_config["color"]
+    bpy.context.object.data.energy = sun_config["energy"]
 
 
 def render_image(
@@ -220,5 +223,5 @@ def generate(
         location=(53 / 2 * GRID_SIZE, -65 * GRID_SIZE, 45 * GRID_SIZE),
         look_at=(53 / 2 * GRID_SIZE, -7 / 4 * GRID_SIZE, 0),
     )
-    place_sun((math.pi / 4, 0, -math.pi / 4))
+    place_sun(config["sun"])
     render_image("./dist")

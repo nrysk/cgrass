@@ -48,3 +48,8 @@ color0 = [0.1, 0.1, 0.1, 1.0]
 color1 = [0.0, 0.0, 0.0, 1.0]
 z_scale = 1.2
 density = 4
+
+[sun]
+color = [1.0, 1.0, 1.0]
+energy = 8.0
+rotation = [45, 0, -45]
