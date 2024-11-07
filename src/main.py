@@ -16,6 +16,7 @@ def parse_args():
         "-b", "--blend-file", type=str, default="./assets/objects.blend"
     )
     parser.add_argument("-c", "--config-file", type=str, default="./config.toml")
+    parser.add_argument("-o", "--output-path", type=str, default="./output/output.png")
     return parser.parse_args(sys.argv[sys.argv.index("--") + 1 :])
 
 
@@ -35,4 +36,4 @@ if __name__ == "__main__":
     data = fetch_github_contributions(github_username, github_token)
 
     # Image 生成
-    generate(args.blend_file, data, config)
+    generate(args.blend_file, data, config, args.output_path)

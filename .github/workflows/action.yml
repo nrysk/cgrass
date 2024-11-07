@@ -22,13 +22,13 @@ jobs:
                 github_username: ${{ github.repository_owner }}
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 config_file: ${{ github.workspace }}/themes/github.toml
-                use_cache: false
+                output_path: output/output.png
 
           - name: Push output image to output branch
             uses: crazy-max/ghaction-github-pages@v4
             with:
                 target_branch: output
-                build_dir: dist
+                build_dir: output
                 commit_message: "Generate Output Image"
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

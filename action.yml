@@ -14,16 +14,15 @@ inputs:
     description: "Path to config file"
     required: true
 
-  use_cache:
-    description: "Whether to use cache for blender installation"
+  output_path:
+    description: "Path to output image"
     required: false
-    default: "false"
+    default: "dist/output.png"
 
 runs:
   using: "composite"
   steps:
     - name: Cache Blender
-      if: ${{ inputs.use_cache }} == 'true'
       id: cache-blender
       uses: actions/cache@v4
       with:
@@ -47,9 +46,11 @@ runs:
           -- 
           -b $GITHUB_ACTION_PATH/assets/objects.blend
           -c $CONFIG_FILE
+          -o $OUTPUT_PATH
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
         GITHUB_USERNAME: ${{ inputs.github_username }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
         CONFIG_FILE: ${{ inputs.config_file }}
+        OUTPUT_PATH: ${{ inputs.output_path }}

@@ -191,12 +191,12 @@ def place_sun(sun_config: dict[str, any]):
 
 
 def render_image(
-    output_dir: str,
+    output_path: str,
     resolution: tuple[int, int] = (1920, 256),
     samples: int = 32,
 ):
     bpy.context.scene.render.image_settings.file_format = "PNG"
-    bpy.context.scene.render.filepath = os.path.join(output_dir, "output.png")
+    bpy.context.scene.render.filepath = output_path
     bpy.context.scene.render.film_transparent = True
     bpy.context.scene.render.resolution_x = resolution[0]
     bpy.context.scene.render.resolution_y = resolution[1]
@@ -210,6 +210,7 @@ def generate(
     blend_file: str,
     data: ContributionData,
     config: dict[str, any],
+    output_path: str,
 ):
     delete_all()
     load_objects(blend_file, [o.value for o in ObjectName])
@@ -224,4 +225,4 @@ def generate(
         look_at=(53 / 2 * GRID_SIZE, -7 / 4 * GRID_SIZE, 0),
     )
     place_sun(config["sun"])
-    render_image("./dist")
+    render_image(output_path)
