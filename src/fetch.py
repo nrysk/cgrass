@@ -1,16 +1,16 @@
 import json
 from dataclasses import dataclass
-from enum import IntEnum
+from enum import StrEnum
 
 import requests
 
 
-class ContributionLevel(IntEnum):
-    NONE = 0
-    FIRST_QUARTILE = 1
-    SECOND_QUARTILE = 2
-    THIRD_QUARTILE = 3
-    FOURTH_QUARTILE = 4
+class ContributionLevel(StrEnum):
+    NONE = "none"
+    FIRST_QUARTILE = "first_quartile"
+    SECOND_QUARTILE = "second_quartile"
+    THIRD_QUARTILE = "third_quartile"
+    FOURTH_QUARTILE = "fourth_quartile"
 
     @classmethod
     def from_str(cls, level: str) -> "ContributionLevel":

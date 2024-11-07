@@ -17,19 +17,27 @@ class ObjectName(StrEnum):
     GROUND2 = "Ground2"
     GROUND3 = "Ground3"
     GROUND4 = "Ground4"
+    LEAF0 = "Leaf0"
+    LEAF1 = "Leaf1"
+    LEAF2 = "Leaf2"
+    LEAF3 = "Leaf3"
+    LEAF4 = "Leaf4"
     GRASS = "Grass"
-    DIRT_BLOCK = "DirtBlock"
-    GRASS_BLOCK = "GrassBlock"
-    GRASS_FLOOR = "GrassFloor"
+
     FOG = "Fog"
 
 
 class MaterialName(StrEnum):
     GROUND_NONE = "GroundNone"
-    GROUND_FIRST_QUARTILE = "GroundFirst"
-    GROUND_SECOND_QUARTILE = "GroundSecond"
-    GROUND_THIRD_QUARTILE = "GroundThird"
-    GROUND_FOURTH_QUARTILE = "GroundFourth"
+    GROUND_FIRST = "GroundFirst"
+    GROUND_SECOND = "GroundSecond"
+    GROUND_THIRD = "GroundThird"
+    GROUND_FOURTH = "GroundFourth"
+    GRASS_NONE = "GrassNone"
+    GRASS_FIRST = "GrassFirst"
+    GRASS_SECOND = "GrassSecond"
+    GRASS_THIRD = "GrassThird"
+    GRASS_FOURTH = "GrassFourth"
 
 
 def delete_all():
@@ -43,6 +51,15 @@ def load_objects(blend_file: str, object_filenames: list[str]):
             filename=f,
             filepath=os.path.join(blend_file, "Object", f),
             directory=os.path.join(blend_file, "Object"),
+        )
+
+
+def load_materials(blend_file: str, material_filenames: list[str]):
+    for f in material_filenames:
+        bpy.ops.wm.append(
+            filename=f,
+            filepath=os.path.join(blend_file, "Material", f),
+            directory=os.path.join(blend_file, "Material"),
         )
 
 
@@ -63,6 +80,7 @@ def place_ground(
     ground_config: dict[str, dict[str, any]],
 ):
     ground_objects = [
+        bpy.data.objects[ObjectName.GROUND0],
         bpy.data.objects[ObjectName.GROUND1],
         bpy.data.objects[ObjectName.GROUND2],
         bpy.data.objects[ObjectName.GROUND3],
@@ -70,23 +88,25 @@ def place_ground(
     ]
     level_to_material = {
         ContributionLevel.NONE: MaterialName.GROUND_NONE,
-        ContributionLevel.FIRST_QUARTILE: MaterialName.GROUND_FIRST_QUARTILE,
-        ContributionLevel.SECOND_QUARTILE: MaterialName.GROUND_SECOND_QUARTILE,
-        ContributionLevel.THIRD_QUARTILE: MaterialName.GROUND_THIRD_QUARTILE,
-        ContributionLevel.FOURTH_QUARTILE: MaterialName.GROUND_FOURTH_QUARTILE,
+        ContributionLevel.FIRST_QUARTILE: MaterialName.GROUND_FIRST,
+        ContributionLevel.SECOND_QUARTILE: MaterialName.GROUND_SECOND,
+        ContributionLevel.THIRD_QUARTILE: MaterialName.GROUND_THIRD,
+        ContributionLevel.FOURTH_QUARTILE: MaterialName.GROUND_FOURTH,
     }
 
     # Material の設定
     for mat_name in [
         MaterialName.GROUND_NONE,
-        MaterialName.GROUND_FIRST_QUARTILE,
-        MaterialName.GROUND_SECOND_QUARTILE,
-        MaterialName.GROUND_THIRD_QUARTILE,
-        MaterialName.GROUND_FOURTH_QUARTILE,
+        MaterialName.GROUND_FIRST,
+        MaterialName.GROUND_SECOND,
+        MaterialName.GROUND_THIRD,
+        MaterialName.GROUND_FOURTH,
     ]:
-        color_ramp_node = bpy.data.materials[mat_name].node_tree.nodes["Color Ramp"]
-        color_ramp_node.color_ramp.elements[0].color = ground_config[mat_name]["color0"]
-        color_ramp_node.color_ramp.elements[1].color = ground_config[mat_name]["color1"]
+        color_ramp = (
+            bpy.data.materials[mat_name].node_tree.nodes["Color Ramp"].color_ramp
+        )
+        color_ramp.elements[0].color = ground_config["material"][mat_name]["color0"]
+        color_ramp.elements[1].color = ground_config["material"][mat_name]["color1"]
 
     for i_col, week in enumerate(level_matrix):
         for i_row, level in enumerate(week):
@@ -112,31 +132,52 @@ def place_ground(
             bpy.context.collection.objects.link(obj)
 
 
-def place_grass(data: ContributionData):
-    object_name_dict = {
-        ContributionLevel.NONE: ObjectName.GRASS,
-        ContributionLevel.FIRST_QUARTILE: ObjectName.GRASS,
-        ContributionLevel.SECOND_QUARTILE: ObjectName.GRASS,
-        ContributionLevel.THIRD_QUARTILE: ObjectName.GRASS,
-        ContributionLevel.FOURTH_QUARTILE: ObjectName.GRASS,
+def place_grass(
+    level_matrix: list[list[ContributionLevel]],
+    grass_config: dict[str, dict[str, any]],
+):
+    level_to_material = {
+        ContributionLevel.NONE: MaterialName.GRASS_NONE,
+        ContributionLevel.FIRST_QUARTILE: MaterialName.GRASS_FIRST,
+        ContributionLevel.SECOND_QUARTILE: MaterialName.GRASS_SECOND,
+        ContributionLevel.THIRD_QUARTILE: MaterialName.GRASS_THIRD,
+        ContributionLevel.FOURTH_QUARTILE: MaterialName.GRASS_FOURTH,
     }
+    # Material の設定
+    for mat_name in [
+        MaterialName.GRASS_NONE,
+        MaterialName.GRASS_FIRST,
+        MaterialName.GRASS_SECOND,
+        MaterialName.GRASS_THIRD,
+        MaterialName.GRASS_FOURTH,
+    ]:
+        color_ramp = (
+            bpy.data.materials[mat_name].node_tree.nodes["Color Ramp"].color_ramp
+        )
+        color_ramp.elements[0].color = grass_config["material"][mat_name]["color0"]
+        color_ramp.elements[1].color = grass_config["material"][mat_name]["color1"]
 
-    for i, week in enumerate(data.level_matrix):
+    for i, week in enumerate(level_matrix):
         for j, level in enumerate(week):
-            obj = bpy.data.objects[object_name_dict[level]]
+            obj = bpy.data.objects[ObjectName.GRASS]
             obj = obj.copy()
             obj.data = obj.data.copy()
 
-            obj.dimensions = (
-                GRID_SIZE,
-                GRID_SIZE,
-                GRID_SIZE,
-            )
+            obj.dimensions = (GRID_SIZE, GRID_SIZE, 0)
             obj.location = (
                 (i + 0.5) * GRID_SIZE,
                 -(j + 0.5) * GRID_SIZE,
                 0,
             )
+            obj.scale.z = grass_config["object"][level]["z_scale"]
+            obj.modifiers["GeometryNodes"]["Socket_4"] = grass_config["object"][level][
+                "density"
+            ]
+            obj.modifiers["GeometryNodes"]["Socket_2"] = random.randint(0, 256)
+            obj.modifiers["GeometryNodes"]["Socket_6"] = bpy.data.materials[
+                level_to_material[level]
+            ]
+
             bpy.context.collection.objects.link(obj)
 
 
@@ -181,11 +222,10 @@ def generate(
 ):
     delete_all()
     load_objects(blend_file, [o.value for o in ObjectName])
-    place_ground(
-        data.level_matrix,
-        config["ground"],
-    )
-    # place_grass(data)
+    load_materials(blend_file, [m.value for m in MaterialName])
+
+    place_ground(data.level_matrix, config["ground"])
+    place_grass(data.level_matrix, config["grass"])
 
     delete_objects([o.value for o in ObjectName])
     place_camera(
