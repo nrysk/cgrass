@@ -17,11 +17,11 @@ jobs:
             uses: actions/checkout@v4
 
           - name: Generate Picture
-            uses: ry05k2ulv/grassland@main
+            uses: nrysk/cgrass@main
             with:
                 github_username: ${{ github.repository_owner }}
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                config_file: ${{ github.workspace }}/themes/c-planet.toml
+                config_file: ${{ github.workspace }}/themes/planet.toml
 
           - name: Push output image to output branch
             uses: crazy-max/ghaction-github-pages@v4
