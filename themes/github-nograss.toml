@@ -53,3 +53,6 @@ density = 0.0
 color = [1.0, 1.0, 1.0]
 energy = 3.0
 rotation = [45, 0, -45]
+
+[render]
+samples = 64

@@ -192,15 +192,15 @@ def place_sun(sun_config: dict[str, any]):
 
 def render_image(
     output_path: str,
+    render_config: dict[str, any],
     resolution: tuple[int, int] = (1920, 256),
-    samples: int = 32,
 ):
     bpy.context.scene.render.image_settings.file_format = "PNG"
     bpy.context.scene.render.filepath = output_path
     bpy.context.scene.render.film_transparent = True
     bpy.context.scene.render.resolution_x = resolution[0]
     bpy.context.scene.render.resolution_y = resolution[1]
-    bpy.context.scene.cycles.samples = samples
+    bpy.context.scene.cycles.samples = render_config["samples"]
     bpy.context.scene.render.engine = "CYCLES"
     bpy.context.scene.cycles.device = "CPU"
     bpy.ops.render.render(write_still=True)
@@ -225,4 +225,4 @@ def generate(
         look_at=(53 / 2 * GRID_SIZE, -7 / 4 * GRID_SIZE, 0),
     )
     place_sun(config["sun"])
-    render_image(output_path)
+    render_image(output_path, config["render"])
