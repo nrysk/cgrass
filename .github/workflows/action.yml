@@ -17,7 +17,7 @@ jobs:
             uses: actions/checkout@v4
 
           - name: Generate Picture
-            uses: nrysk/cgrass@main
+            uses: nrysk/cgrass@v1.0.0
             with:
                 github_username: ${{ github.repository_owner }}
                 github_token: ${{ secrets.GITHUB_TOKEN }}

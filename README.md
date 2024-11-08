@@ -27,7 +27,7 @@ jobs:
             uses: actions/checkout@v4
 
           - name: Generate Picture
-            uses: nrysk/cgrass@main
+            uses: nrysk/cgrass@v1.0.0
             with:
                 github_username: ${{ github.repository_owner }}
                 github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -56,7 +56,7 @@ You can use the following code to display the generated image.
 
 ```yaml
   - name: Generate Picture
-    uses: nrysk/cgrass@main
+    uses: nrysk/cgrass@v1.0.0
     with:
         github_username: ${{ github.repository_owner }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -70,7 +70,7 @@ You can use the following code to display the generated image.
 
 ```yaml
   - name: Generate Picture
-    uses: nrysk/cgrass@main
+    uses: nrysk/cgrass@v1.0.0
     with:
         github_username: ${{ github.repository_owner }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -84,7 +84,7 @@ You can use the following code to display the generated image.
 
 ```yaml
   - name: Generate Picture
-    uses: nrysk/cgrass@main
+    uses: nrysk/cgrass@v1.0.0
     with:
         github_username: ${{ github.repository_owner }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -98,7 +98,7 @@ You can use the following code to display the generated image.
 
 ```yaml
   - name: Generate Picture
-    uses: nrysk/cgrass@main
+    uses: nrysk/cgrass@v1.0.0
     with:
         github_username: ${{ github.repository_owner }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -130,4 +130,4 @@ Link the configuration file in your workflow file.
 
 ### 3. Now you can change the configuration file as you like
 
-
+### I am looking forward to your theme!
