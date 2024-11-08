@@ -1,4 +1,4 @@
-# cgrass (Contribution to Grass)
+_If you like this project, please give it a star ⭐️_
 
 ## Getting Started
 
@@ -51,7 +51,8 @@ You can use the following code to display the generated image.
 ```
 
 ## Themes
-### github theme
+### ☘️ github theme
+
 ![github theme](img/github.png)
 
 ```yaml
@@ -65,7 +66,7 @@ You can use the following code to display the generated image.
         argument: "github" # change here
 ```
 
-### github-nograss theme
+### ☘️ github-nograss theme
 ![github-nograss theme](img/github-nograss.png)
 
 ```yaml
@@ -79,7 +80,7 @@ You can use the following code to display the generated image.
         argument: "github-nograss" # change here
 ```
 
-### planet theme
+### 🪐 planet theme
 ![planet theme](img/planet.png)
 
 ```yaml
@@ -93,7 +94,7 @@ You can use the following code to display the generated image.
         argument: "planet" # change here
 ```
 
-### planet-nograss theme
+### 🪐 planet-nograss theme
 ![planet-nograss theme](img/planet-nograss.png)
 
 ```yaml
@@ -112,7 +113,7 @@ You can use the following code to display the generated image.
 ### 1. Create a new configuration file
 Create a new configuration file in your repository. For example, create a file named `mytheme.toml` in the root of your repository.
 
-Configuration file example: [config.toml](config.toml)
+Configuration file example: [mytheme.toml](mytheme.toml)
 
 ### 2. Link the configuration file
 Link the configuration file in your workflow file.
@@ -130,4 +131,6 @@ Link the configuration file in your workflow file.
 
 ### 3. Now you can change the configuration file as you like
 
+### 4. I am looking forward to your theme!
 
+_If you have any idea, please share them_
