@@ -1,11 +1,11 @@
 [English](README.md) | [日本語](README.ja.md)
 
-_If you like this project, please give it a star ⭐️_
+_気に入ってくれたら, スターがほしいです ⭐️_
 
 ## Getting Started
 
 ### GitHub Actions
-Copy the following code to your `.github/workflows/cgrass.yml` file in your profile repository.
+あなたの Profile リポジトリの `.github/workflows/cgrass.yml` に以下のコードをコピーしてください。
 
 ```yaml
 name: Generate Picture and Push to output branch
@@ -47,7 +47,7 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-You can use the following code to display the generated image.
+以下のコードで生成された画像を表示できます。
 ```
 ![Contribution to Grass](https://raw.githubusercontent.com/<username>/<username>/refs/heads/output/output.png)
 ```
@@ -88,13 +88,13 @@ argument: "planet-nograss" # change here
 
 ## Make your own theme
 
-### 1. Create a new configuration file
-Create a new configuration file in your repository. For example, create a file named `mytheme.toml` in the root of your repository.
+### 1. 設定ファイルを作成します
+Profile リポジトリに設定ファイルを作成します. 例えば, `mytheme.toml` というファイルをリポジトリのルートに作成します.
 
-Configuration file example: [mytheme.toml](mytheme.toml)
+コンフィグファイル例: [mytheme.toml](mytheme.toml)
 
-### 2. Link the configuration file
-Link the configuration file in your workflow file by changing the `command` and `argument` values in the following code.
+### 2. 設定ファイルをリンクします
+`.github/workflows/cgrass.yml` の `command` と `argument` を変更します.
 
 ```yaml
   - name: Generate Picture
@@ -107,10 +107,10 @@ Link the configuration file in your workflow file by changing the `command` and 
         argument: ${{ github.workspace }}/mytheme.toml # change here
 ```
 
-### 3. Now you can change the configuration file as you like
+### 3. 後は好きなように設定ファイルを変更してください
 
-### 4. I am looking forward to your theme!
+### 4. 面白いテーマができるのを楽しみにしています！
 
 ---
 
-_If you have any idea, please share them_
+_アイデアがあれば, 共有していただけると幸いです_
