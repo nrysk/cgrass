@@ -47,7 +47,7 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-以下のコードで生成された画像を表示できます。
+以下のコードで生成された画像を表示できます。`<username>` は GitHub のユーザ名で置き換えてください.
 ```
 ![Contribution to Grass](https://raw.githubusercontent.com/<username>/<username>/refs/heads/output/output.png)
 ```
