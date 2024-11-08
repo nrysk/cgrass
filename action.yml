@@ -1,5 +1,10 @@
-name: grassland
+name: cgrass
 description: Generate 3d grass image from github contributions grid
+author: nrysk
+
+branding:
+  icon: grid
+  color: green
 
 inputs:
   github_username:

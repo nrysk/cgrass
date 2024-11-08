@@ -109,4 +109,6 @@ Link the configuration file in your workflow file.
 
 ### 4. I am looking forward to your theme!
 
+---
+
 _If you have any idea, please share them_
