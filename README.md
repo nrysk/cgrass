@@ -56,56 +56,32 @@ You can use the following code to display the generated image.
 ![github theme](img/github.png)
 
 ```yaml
-  - name: Generate Picture
-    uses: nrysk/cgrass@v1.0.0
-    with:
-        github_username: ${{ github.repository_owner }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        output_path: output/output.png
-        command: "theme"
-        argument: "github" # change here
+command: "theme"
+argument: "github" # change here
 ```
 
 ### ☘️ github-nograss theme
 ![github-nograss theme](img/github-nograss.png)
 
 ```yaml
-  - name: Generate Picture
-    uses: nrysk/cgrass@v1.0.0
-    with:
-        github_username: ${{ github.repository_owner }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        output_path: output/output.png
-        command: "theme"
-        argument: "github-nograss" # change here
+command: "theme"
+argument: "github-nograss" # change here
 ```
 
 ### 🪐 planet theme
 ![planet theme](img/planet.png)
 
 ```yaml
-  - name: Generate Picture
-    uses: nrysk/cgrass@v1.0.0
-    with:
-        github_username: ${{ github.repository_owner }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        output_path: output/output.png
-        command: "theme"
-        argument: "planet" # change here
+command: "theme"
+argument: "planet" # change here
 ```
 
 ### 🪐 planet-nograss theme
 ![planet-nograss theme](img/planet-nograss.png)
 
 ```yaml
-  - name: Generate Picture
-    uses: nrysk/cgrass@v1.0.0
-    with:
-        github_username: ${{ github.repository_owner }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        output_path: output/output.png
-        command: "theme"
-        argument: "planet-nograss" # change here
+command: "theme"
+argument: "planet-nograss" # change here
 ```
 
 ## Make your own theme
@@ -120,7 +96,7 @@ Link the configuration file in your workflow file.
 
 ```yaml
   - name: Generate Picture
-    uses: nrysk/cgrass@main
+    uses: nrysk/cgrass@v1.0.0
     with:
         github_username: ${{ github.repository_owner }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
