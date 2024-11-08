@@ -10,8 +10,12 @@ inputs:
     description: "GitHub token for fetching contributions grid"
     required: true
   
-  config_file:
-    description: "Path to config file"
+  command:
+    description: "Command to select the type of configuration"
+    required: true
+
+  argument:
+    description: "Argument to select the configuration file"
     required: true
 
   output_path:
@@ -45,12 +49,12 @@ runs:
           --python $GITHUB_ACTION_PATH/src/main.py
           -- 
           -b $GITHUB_ACTION_PATH/assets/objects.blend
-          -c $CONFIG_FILE
-          -o $OUTPUT_PATH
+          -o ${{ inputs.output_path }}
+          -t $GITHUB_ACTION_PATH/themes
+          ${{ inputs.command }}
+          ${{ inputs.argument }}
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
         GITHUB_USERNAME: ${{ inputs.github_username }}
         GITHUB_TOKEN: ${{ inputs.github_token }}
-        CONFIG_FILE: ${{ inputs.config_file }}
-        OUTPUT_PATH: ${{ inputs.output_path }}

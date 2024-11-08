@@ -12,10 +12,18 @@ from fetch import fetch_github_contributions
 
 def parse_args():
     parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers(dest="subcommand")
+
+    themefile_parser = subparsers.add_parser("themefile")
+    themefile_parser.add_argument("themefile", type=str, help="Path to the theme file")
+
+    theme_parser = subparsers.add_parser("theme")
+    theme_parser.add_argument("theme", type=str, help="Name of the theme")
+
     parser.add_argument(
         "-b", "--blend-file", type=str, default="./assets/objects.blend"
     )
-    parser.add_argument("-c", "--config-file", type=str, default="./config.toml")
+    parser.add_argument("-t", "--theme-dir", type=str, default="./themes")
     parser.add_argument("-o", "--output-path", type=str, default="./output/output.png")
     return parser.parse_args(sys.argv[sys.argv.index("--") + 1 :])
 
@@ -29,8 +37,12 @@ if __name__ == "__main__":
     github_token = os.getenv("GITHUB_TOKEN")
 
     # TOML ファイルの読み込み
-    with open(args.config_file, mode="rb") as f:
-        config = tomllib.load(f)
+    if args.subcommand == "themefile":
+        with open(args.themefile) as f:
+            config = tomllib.loads(f.read())
+    elif args.subcommand == "theme":
+        with open(f"{os.path.join(args.theme_dir, args.theme)}.toml") as f:
+            config = tomllib.loads(f.read())
 
     # GitHub のデータを取得
     data = fetch_github_contributions(github_username, github_token)
