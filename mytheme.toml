@@ -55,4 +55,4 @@ energy = 3.0
 rotation = [45, 0, -45]
 
 [render]
-samples = 32
+samples = 64

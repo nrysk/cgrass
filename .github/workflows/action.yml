@@ -22,8 +22,8 @@ jobs:
                 github_username: ${{ github.repository_owner }}
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 output_path: output/output.png
-                command: "themefile"
-                argument: ${{ github.workspace}}/config.toml
+                command: "theme"
+                argument: "github"
 
           - name: Push output image to output branch
             uses: crazy-max/ghaction-github-pages@v4
