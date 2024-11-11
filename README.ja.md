@@ -1,8 +1,8 @@
-[English](README.md) | [日本語](README.ja.md)
+[English](https://github.com/nrysk/cgrass/blob/main/README.md) | [日本語](https://github.com/nrysk/cgrass/blob/main/README.ja.md)
 
-![CGrass](img/github-expanded1.png)
+![CGrass](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/github-expanded1.png)
 
-_スターを貰えると励みになります ⭐️_
+_スターをして頂けると励みになります ⭐️_
 
 # CGrass
 
@@ -61,7 +61,7 @@ jobs:
 ## Themes
 ### ☘️ github theme
 
-![github theme](img/github.png)
+![github theme](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/github.png)
 
 ```yaml
 command: "theme"
@@ -69,7 +69,7 @@ argument: "github" # change here
 ```
 
 ### ☘️ github-nograss theme
-![github-nograss theme](img/github-nograss.png)
+![github-nograss theme](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/github-nograss.png)
 
 ```yaml
 command: "theme"
@@ -77,7 +77,7 @@ argument: "github-nograss" # change here
 ```
 
 ### 🪐 planet theme
-![planet theme](img/planet.png)
+![planet theme](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/planet.png)
 
 ```yaml
 command: "theme"
@@ -85,7 +85,7 @@ argument: "planet" # change here
 ```
 
 ### 🪐 planet-nograss theme
-![planet-nograss theme](img/planet-nograss.png)
+![planet-nograss theme](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/planet-nograss.png)
 
 ```yaml
 command: "theme"
@@ -114,6 +114,9 @@ Profile リポジトリに設定ファイルを作成します. 例えば, `myth
 ```
 
 ### 3. 後は好きなように設定ファイルを変更してください
+
+- ground と grass の色は RGBA で指定します.
+- sun の色は RGB で指定します.
 
 ### 4. 面白いテーマができるのを楽しみにしています！
 

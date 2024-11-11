@@ -1,7 +1,7 @@
 
-[English](README.md) | [日本語](README.ja.md)
+[English](https://github.com/nrysk/cgrass/blob/main/README.md) | [日本語](https://github.com/nrysk/cgrass/blob/main/README.ja.md)
 
-![CGrass](img/github-expanded1.png)
+![CGrass](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/github-expanded1.png)
 
 _If you like this project, please give it a star ⭐️_
 
@@ -63,7 +63,7 @@ You can use the following code to display the generated image. Replace `<usernam
 ## Themes
 ### ☘️ github theme
 
-![github theme](img/github.png)
+![github theme](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/github.png)
 
 ```yaml
 command: "theme"
@@ -71,7 +71,7 @@ argument: "github" # change here
 ```
 
 ### ☘️ github-nograss theme
-![github-nograss theme](img/github-nograss.png)
+![github-nograss theme](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/github-nograss.png)
 
 ```yaml
 command: "theme"
@@ -79,7 +79,7 @@ argument: "github-nograss" # change here
 ```
 
 ### 🪐 planet theme
-![planet theme](img/planet.png)
+![planet theme](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/planet.png)
 
 ```yaml
 command: "theme"
@@ -87,7 +87,7 @@ argument: "planet" # change here
 ```
 
 ### 🪐 planet-nograss theme
-![planet-nograss theme](img/planet-nograss.png)
+![planet-nograss theme](https://raw.githubusercontent.com/nrysk/cgrass/refs/heads/main/img/planet-nograss.png)
 
 ```yaml
 command: "theme"
@@ -116,6 +116,9 @@ Link the configuration file in your workflow file by changing the `command` and 
 ```
 
 ### 3. Now you can change the configuration file as you like
+
+- The color of the ground and grass can be specified in RGBA.
+- The color of the sun can be specified in RGB.
 
 ### 4. I am looking forward to your theme!
 
