@@ -1,6 +1,12 @@
 [English](README.md) | [日本語](README.ja.md)
 
-_気に入ってくれたら, スターがほしいです ⭐️_
+![CGrass](img/github-expanded1.png)
+
+_スターを貰えると励みになります ⭐️_
+
+# CGrass
+
+CGrass は GitHub Actions 上で動作する GitHub Contribution 画像生成ツールです. 生成された 3D 画像をプロフィールの README に設定することができます.
 
 ## Getting Started
 

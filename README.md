@@ -1,6 +1,14 @@
+
 [English](README.md) | [日本語](README.ja.md)
 
+![CGrass](img/github-expanded1.png)
+
 _If you like this project, please give it a star ⭐️_
+
+
+# CGrass
+
+CGrass is a GitHub contribution image generator that can integrate with GitHub Actions. It allows you to generate a 3D image of your GitHub contributions and set it in your profile README.
 
 ## Getting Started
 
